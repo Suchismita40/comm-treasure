@@ -33,8 +33,9 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 ![Stellar Explorer](public/contract-explorer.png)
 
 ### 4. Mobile Responsive UI
-*Fully responsive interface optimized for mobile layout (resizing cards, stackable grids, and responsive bottom bar navigation).*
+*Fully responsive interface optimized for mobile layout (resizing cards, stackable grids, milestone tranche release buttons, and responsive bottom bar navigation).*
 ![Mobile Responsive UI](public/mobile-ui.png)
+![Mobile Proposal View](public/mobile-ui-2.png)
 
 ---
 
