@@ -9,7 +9,7 @@ export const STELLAR_CONFIG = {
     "https://stellar.expert/explorer/testnet",
   contractId:
     process.env.NEXT_PUBLIC_CONTRACT_ID ||
-    "CB67890TREASURYCONTRACTIDSTELLARTESTNETDAPPDEMO",
+    "CC35LHQER6EJDLCV747HWI3I3V3JUPCK4MIZFTH6NC55LTHC335Y47FC",
 };
 
 export const SUPPORTED_WALLETS = [

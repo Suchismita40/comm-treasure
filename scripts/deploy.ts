@@ -42,7 +42,7 @@ async function main() {
   console.log(`🔑 Deployer Public Key: ${adminKeypair.publicKey()}`);
 
   // Simulated deployment hash for local build environments when rust target wasm isn't pre-built
-  const mockContractId = `CB67890TREASURYCONTRACTIDSTELLARTESTNETDAPPDEMO`;
+  const mockContractId = `CC35LHQER6EJDLCV747HWI3I3V3JUPCK4MIZFTH6NC55LTHC335Y47FC`;
   const mockTxHash = `0x7a8f9c1b2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a`;
 
   console.log("\n=======================================================");
