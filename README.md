@@ -14,7 +14,6 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 
 * **GitHub Repository**: [Suchismita40/community-treasury-management](https://github.com/Suchismita40/community-treasury-management)
 * **Live Demo**: [StellarVault Production App](https://community-treasury-management.vercel.app/)
-* **Demo Video**: [StellarVault Walkthrough (YouTube)](https://youtu.be/3qgqUzfpmUs?si=aZgbx3VDHC7CGOru)
 
 ---
 
