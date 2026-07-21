@@ -14,6 +14,7 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 
 * **GitHub Repository**: [Suchismita40/comm-treasure](https://github.com/Suchismita40/comm-treasure)
 * **Live Demo**: [StellarVault Production App](https://comm-treasure.vercel.app/)
+* **Live Demo Link**: [▶ Watch Live Demo on YouTube](https://youtu.be/SUXjR6fR94E)
 
 ---
 
