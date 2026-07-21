@@ -33,6 +33,10 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 *On-chain verification showing smart contract interaction trace, event emissions, and WASM contract invocation history on the Stellar Testnet.*
 ![Stellar Explorer](public/contract-explorer.png)
 
+### 4. Mobile Responsive UI
+*Fully responsive mobile interface featuring top mobile hamburger drawer navigation, stackable grid cards, touch-optimized controls, and floating bottom navigation bar.*
+![Mobile Responsive UI](public/mobile-ui.png)
+
 ---
 
 ## ⛓ Deployed Addresses (Stellar Testnet)
