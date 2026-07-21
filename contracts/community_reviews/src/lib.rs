@@ -1,6 +1,6 @@
 #![no_std]
 use soroban_sdk::{
-    contract, contractimpl, contracttype, symbol_short, Address, Env, String, Symbol, Vec,
+    contract, contractimpl, contracttype, symbol_short, Address, Env, IntoVal, String, Symbol, Vec,
 };
 
 #[contracttype]
@@ -95,15 +95,15 @@ impl CommunityReviewsContract {
         // Inter-Contract Call to Treasury Core Contract
         // Invoke `reward_reviewer(caller_contract, reviewer, reward_amount)`
         let reward_amount: i128 = 100;
+        let mut args = Vec::new(&env);
+        args.push_back(env.current_contract_address().into_val(&env));
+        args.push_back(reviewer.into_val(&env));
+        args.push_back(reward_amount.into_val(&env));
+
         env.invoke_contract::<()>(
             &treasury_core_contract,
             &Symbol::new(&env, "reward_reviewer"),
-            soroban_sdk::vec![
-                &env,
-                env.current_contract_address().to_val(),
-                reviewer.to_val(),
-                reward_amount.into(),
-            ],
+            args,
         );
 
         // Emit Event
@@ -136,3 +136,6 @@ impl CommunityReviewsContract {
         result
     }
 }
+
+#[cfg(test)]
+mod test;
