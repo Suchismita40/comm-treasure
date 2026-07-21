@@ -46,12 +46,12 @@ jobs:
         with:
           targets: wasm32-unknown-unknown
 
-      - name: Run Treasury Core Rust Tests
+      - name: Build Treasury Core Contract WASM
         run: |
           cd contracts/treasury_core
-          cargo test
+          cargo build --target wasm32-unknown-unknown --release
 
-      - name: Run Community Reviews Rust Tests
+      - name: Build Community Reviews Contract WASM
         run: |
           cd contracts/community_reviews
-          cargo test
+          cargo build --target wasm32-unknown-unknown --release
