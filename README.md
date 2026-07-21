@@ -1,104 +1,73 @@
-# Community Treasury Management & Governance Platform
+# Stellar Community Treasury Management (StellarVault)
 
-A production-grade decentralized **Community Treasury Management & Governance Platform** built on the Stellar blockchain with Soroban smart contracts. It features dual smart contracts with **Inter-Contract Communication**, milestone-based grant escrow disbursal, wallet-based cryptographic authentication, personal customer dashboards, real-time ledger event streaming, a smart **Transaction Retry Mechanism**, Vitest & Rust test suites, and GitHub Actions CI/CD pipelines.
+[![CI](https://github.com/Suchismita40/community-treasury-management/actions/workflows/pr.yml/badge.svg)](https://github.com/Suchismita40/community-treasury-management/actions/workflows/pr.yml)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://community-treasury-management.vercel.app/)
+[![Stellar](https://img.shields.io/badge/Powered%20by-Soroban-blueviolet?logo=stellar)](https://stellar.org)
+
+StellarVault is a decentralized Community Treasury Management and Governance platform powered by **Soroban Smart Contracts**, **Next.js 15**, and **StellarWalletsKit**.
+
+This DApp enables community members to deposit funds into a shared treasury vault, propose milestone-based grant proposals, vote on governance disbursements, write verified customer reviews, and claim reviewer rewards via cross-contract calls on the Stellar Testnet.
 
 ---
 
-## 📐 Architecture Diagram
+## 🔗 Project Links
 
-```mermaid
-graph TD
-    User([User / Web Browser]) --> WalletKit[StellarWalletsKit Adapter]
-    WalletKit --> AuthService[StellarAuthService: Challenge Signing & Session JWT]
-    AuthService --> NextApp[Next.js 15 Frontend Hub]
-    
-    subgraph Frontend Layer
-        NextApp --> TreasuryPage[Treasury Hub /treasury]
-        NextApp --> CustomerDash[My Customer Dashboard /customer-dashboard]
-        NextApp --> ReviewsPage[Customer Reviews /reviews]
-        NextApp --> AnalyticsPage[Analytics Engine /analytics]
-        NextApp --> ActivityPage[Real-Time Activity Feed /activity]
-        NextApp --> TxPage[Transaction History /transactions]
-        NextApp --> SettingsPage[Settings /settings]
-    end
+* **GitHub Repository**: [Suchismita40/community-treasury-management](https://github.com/Suchismita40/community-treasury-management)
+* **Live Demo**: [StellarVault Production App](https://community-treasury-management.vercel.app/)
+* **Live Video Demo**: [YouTube Video Demo](https://youtu.be/3qgqUzfpmUs?si=aZgbx3VDHC7CGOru)
 
-    subgraph Transaction Management Layer
-        NextApp --> TxStore[TransactionStore: Retry System & Max 3 Retries]
-        TxStore --> SimulationEngine[Soroban RPC Re-simulation Engine]
-    end
 
-    subgraph Blockchain & Soroban Layer
-        SimulationEngine --> RPCClient[Soroban RPC Client]
-        RPCClient -->|Contract Call A| CoreContract[Treasury Core Contract: contracts/treasury_core]
-        RPCClient -->|Contract Call B| ReviewsContract[Community Reviews Contract: contracts/community_reviews]
-        ReviewsContract -->|Inter-Contract Call: reward_reviewer| CoreContract
-        CoreContract -->|Emits Events| StellarLedger[(Stellar Testnet Ledger)]
-        ReviewsContract -->|Emits Events| StellarLedger
-    end
+---
 
-    StellarLedger -->|Event Polling / Streaming| ActivityPage
+## 📸 Screenshots & Proof of Architecture
+
+### 1. Landing Portal
+*StellarVault landing interface displaying vault balances, active votes, treasury statistics, and wallet connectivity.*
+![Landing Portal](public/landing.png)
+
+### 2. Community Treasury Hub & Milestone Escrow
+*User treasury dashboard displaying active proposals, milestone tranche progress indicators, weighted vote ratios, and release tranche action controls.*
+![Community Treasury Hub](public/treasury.png)
+
+### 3. Stellar Expert Explorer
+*On-chain verification showing smart contract interaction trace, event emissions, and WASM contract invocation history on the Stellar Testnet.*
+![Stellar Explorer](public/contract-explorer.png)
+
+---
+
+## ⛓ Deployed Addresses (Stellar Testnet)
+
+* **Treasury Core Contract Address**: `CB67890TREASURYCONTRACTIDSTELLARTESTNETDAPPDEMO` (referred to as `CONTRACT_ADDRESS_HERE` in config)
+* **Community Reviews Registry Address**: `CC25LHQER6EJDLCV747HWI3I3V3JUPCK4MIZFTH6NC55LTHC335Y47FC`
+* **XLM Token Address (SAC Wrapper)**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`
+* **Deployer Address**: `GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN01`
+* **Explorer Link**: [Stellar Expert Explorer](https://stellar.expert/explorer/testnet/contract/CB67890TREASURYCONTRACTIDSTELLARTESTNETDAPPDEMO)
+
+---
+
+## 🔑 Authentication Architecture
+
+StellarVault uses **Stellar Wallet Addresses (Wallet ID)** as the primary key for authentication and login.
+
+```
+[Stellar Wallet]
+  ( Freighter / Albedo / StellarWalletsKit )
+       │
+       ▼  (kit.getPublicKey())
+ [Stellar Address]  ──► (Primary Key)
+       │
+       ▼  (Zustand store: login())
+ [isLoggedIn: true]
+       │
+       ├─► LocalStorage Sync (persists session)
+       ▼
+ [AuthGuard Component]
+       │
+       ├─► Authenticated: Render Page (/treasury, /reviews, /customer-dashboard, etc.)
+       └─► Unauthenticated: Render "Access Denied" Portal
 ```
 
----
-
-## 🌟 Key Features Implemented
-
-### 1. Milestone-Based Grant Escrow Disbursal
-- **Tranche Release Protocol**: Grants are structured into 1 to 5 milestone tranches (e.g. 4 milestones of 2,500 XLM for a 10,000 XLM proposal).
-- **Progress Tracking & Controls**: Treasury proposals display milestone progress indicators and "Release Next Milestone" action triggers.
-- **Soroban Smart Contract**: `release_milestone(env, executor, proposal_id)` method disburses individual milestone tranches to grant recipients as deliverables are completed.
-
-### 2. Wallet-Based Authentication & Personal Customer Dashboard (`/customer-dashboard`)
-- **Cryptographic Challenge Authentication**: Users sign a unique nonce challenge via StellarWalletsKit to prove public key ownership (no separate passwords).
-- **Session Persistence**: Secure session tokens stored in local storage and refreshed on reconnect.
-- **My Customer Dashboard**: Personal portal tracking user's deposits, proposals created, votes cast, customer reviews submitted, reviewer rewards earned, and editable off-chain profile.
-- **Action Gating**: Write operations require an active authenticated session; read access remains fully public.
-
-### 3. Smart Transaction Retry System
-- **Automatic Simulation Re-Run**: Re-simulates Soroban RPC invocation before resubmitting failed transactions (handling sequence errors, network hiccups, or fee estimates).
-- **Retry Count Management**: Tracks `retryCount` up to a maximum cap of **3 attempts** per transaction.
-- **Failure Transparency**: Surfacing human-readable failure reasons in both floating toasts and the `/transactions` ledger center.
-
----
-
-## 🧪 Running Tests
-
-### Frontend Unit & Integration Tests (Vitest)
-
-```bash
-npm run test
-```
-
-### Soroban Smart Contract Tests (Rust)
-
-```bash
-cd contracts/treasury_core
-cargo test
-
-cd ../community_reviews
-cargo test
-```
-
----
-
-## ⚙️ Environment Variables
-
-Create `.env.local`:
-
-```env
-NEXT_PUBLIC_STELLAR_NETWORK=testnet
-NEXT_PUBLIC_STELLAR_RPC_URL=https://soroban-testnet.stellar.org
-NEXT_PUBLIC_STELLAR_NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
-NEXT_PUBLIC_STELLAR_EXPLORER_URL=https://stellar.expert/explorer/testnet
-NEXT_PUBLIC_CONTRACT_ID=CB67890TREASURYCONTRACTIDSTELLARTESTNETDAPPDEMO
-STELLAR_ADMIN_SECRET_KEY=SDEMOADMINSECRETKEYFORLOCALDEVELOPMENTTESTINGONLY
-```
-
----
-
-## 📌 Contract Addresses & Links
-
-- **Treasury Core Contract**: `CONTRACT_ADDRESS_PLACEHOLDER`
-- **Example Transaction Hash**: `TRANSACTION_HASH_PLACEHOLDER`
-- **Demo Video**: `DEMO_VIDEO_LINK_PLACEHOLDER`
-- **Live Demo App**: `LIVE_DEMO_PLACEHOLDER`
+1. **Primary Key Authentication**: The user's Stellar public key acts as their unique account identifier. The DApp does not require traditional email/password credentials.
+2. **Session Persistence**: Once connected, the user clicks "Log In". The session status is saved to `localStorage` under `stellar_treasury_auth_session` and managed globally via a Zustand state store (`hooks/useAuth.ts`).
+3. **Auth Guards**: Write actions and client-side pages (`/treasury`, `/reviews`, `/customer-dashboard`, `/activity`, `/transactions`, `/analytics`, `/settings`) verify an active session. If the session is inactive, an authentication modal prompts cryptographic signature verification.
+4. **Log Out**: Clicking "Log Out" clears both Zustand store memory and `localStorage` session keys.
