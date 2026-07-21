@@ -37,6 +37,10 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 ![Mobile Responsive UI](public/mobile-ui.png)
 ![Mobile Proposal View](public/mobile-ui-2.png)
 
+### 5. CI/CD Integration Pipeline
+*GitHub Actions workflow verifying smart contract checks, linter validations, typescript type-checks, and production bundle builds.*
+![CI/CD Pipeline](public/ci-cd.png)
+
 ---
 
 ## ⛓ Deployed Addresses (Stellar Testnet)
