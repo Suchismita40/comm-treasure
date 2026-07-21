@@ -121,64 +121,120 @@ pub struct Proposal {
 }
 ```
 
-### 2. Core Smart Contract Functions
+### 2. Contract Interfaces (Functions)
 
-* **`initialize(env: Env, admin: Address)`**: Initializes contract state, sets the admin address, and allocates the 50,000 XLM reviewer rewards pool.
-* **`deposit(env: Env, from: Address, amount: i128)`**: Deposits XLM into the treasury vault and updates user contribution balances.
-* **`create_proposal(env: Env, creator: Address, title: String, description: String, recipient: Address, amount: i128, duration_ledgers: u32, milestone_count: u32) -> u32`**: Creates a new proposal with milestone escrow count and tranche calculations.
-* **`vote(env: Env, voter: Address, proposal_id: u32, approve: bool)`**: Records weighted votes (YES / NO) for an active proposal.
-* **`execute_proposal(env: Env, executor: Address, proposal_id: u32)`**: Executes a passed proposal and disburses initial milestone tranche.
-* **`release_milestone(env: Env, executor: Address, proposal_id: u32)`**: Disburses subsequent milestone tranches to the recipient as deliverables are completed.
-* **`reward_reviewer(env: Env, caller_contract: Address, reviewer: Address, reward_amount: i128)`**: Inter-contract entry point invoked by `community_reviews` to disburse 100 XLM reviewer rewards.
+* **`initialize(env: Env, admin: Address)`**
+  Sets up the treasury core contract and allocates the 50,000 XLM reviewer rewards pool. Can only be invoked once.
+
+* **`deposit(env: Env, from: Address, amount: i128)`**
+  Allows community members to deposit XLM into the vault to mint proportional voting weight.
+  *Authorization: `from` must authenticate.*
+
+* **`create_proposal(env: Env, creator: Address, title: String, description: String, recipient: Address, amount: i128, duration_ledgers: u32, milestone_count: u32) -> u32`**
+  Allows a creator to register a milestone-escrow proposal. Returns the generated proposal ID.
+  *Authorization: `creator` must authenticate.*
+
+* **`vote(env: Env, voter: Address, proposal_id: u32, approve: bool)`**
+  Allows a voter to cast a weighted YES or NO vote on an active proposal.
+  *Authorization: `voter` must authenticate.*
+
+* **`execute_proposal(env: Env, executor: Address, proposal_id: u32)`**
+  Allows an executor to disburse Milestone Tranche #1 for a passed proposal.
+  *Authorization: `executor` must authenticate.*
+
+* **`release_milestone(env: Env, executor: Address, proposal_id: u32)`**
+  Allows the release of subsequent milestone tranches to the recipient as deliverables are completed.
+  *Authorization: `executor` must authenticate.*
+
+* **`submit_review(env: Env, reviewer: Address, proposal_id: u32, proposal_title: String, rating: u32, feedback: String) -> u32`**
+  Allows a community member to submit a 1-5 star review and trigger an inter-contract 100 XLM reward claim.
+  *Authorization: `reviewer` must authenticate.*
 
 ---
 
-## 🧪 Testing Suite & Verification
+## 🚀 User Proof of Concept (PoC) Walkthrough
 
-### 1. Rust Smart Contract Unit Tests (`contracts/treasury_core/src/test.rs`)
-Run Soroban environment mock unit tests:
+Follow this step-by-step test scenario to experience the DApp's core lifecycle on the Stellar Testnet.
+
+```
+       AUTHENTICATE             DEPOSIT XLM            CREATE PROPOSAL
+┌────────────────────────┐  ┌───────────────────┐  ┌────────────────────┐
+│ 1. Connect wallet      │─►│ 2. Deposit XLM to │─►│ 3. Propose grant   │
+│    and sign in session │  │    mint voting    │  │    with milestones │
+└────────────────────────┘  └───────────────────┘  └────────────────────┘
+                                                             │
+                                                             ▼
+        SUBMIT REVIEW            RELEASE MILESTONE         VOTE & EXECUTE
+┌────────────────────────┐  ┌───────────────────┐  ┌────────────────────┐
+│ 6. Submit review and   │◄─│ 5. Release next   │◄─│ 4. Vote YES/NO and │
+│    claim 100 XLM       │  │    milestone      │  │    execute grant   │
+└────────────────────────┘  └───────────────────┘  └────────────────────┘
+```
+
+### Step 1: Wallet Authentication
+1. Install Freighter Wallet extension and switch network to Testnet.
+2. Go to the StellarVault landing page (http://localhost:3000).
+3. Click **Connect Wallet** and select Freighter.
+4. Once authenticated, your session is established, and you are redirected to the Treasury Hub.
+
+### Step 2: Deposit XLM into Vault
+1. Go to the Treasury Hub page and click **Deposit XLM**.
+2. Fill out the form:
+   * **Amount**: `5000 XLM`
+3. Click **Confirm Soroban Deposit** and sign the transaction in Freighter.
+4. Depositing XLM mints proportional voting power across all community proposals.
+
+### Step 3: Create a Milestone Proposal
+1. Click **Create Proposal**.
+2. Fill out the form:
+   * **Title**: `Stellar Developer Bootcamp Q3 Grant`
+   * **Grant Amount**: `10000 XLM`
+   * **Milestones**: `4 Tranches` (2,500 XLM per milestone)
+   * **Recipient Address**: `GBOOTCAMPDEVRECEIVERSTELLARTESTNET012345`
+   * **Description**: `Fund 10 full scholarships for open-source Soroban smart contract training.`
+3. Click **Submit Milestone Proposal** and sign the transaction in Freighter.
+
+### Step 4: Vote & Execute Proposal
+1. Switch to a voter account or use your connected account.
+2. Locate the proposal card in the catalog and click **Vote YES**.
+3. Once passed, click **Execute Proposal** and sign in Freighter to release Milestone Tranche #1 (2,500 XLM).
+
+### Step 5: Release Milestone Tranche
+1. As work deliverables are completed, locate the executed proposal card.
+2. Click **Release Next Milestone Tranche (2,500 XLM)** and sign the transaction in Freighter.
+3. The contract updates `milestonesClaimed` to 2/4 and transfers tranche funds on-chain.
+
+### Step 6: Review & Star Reputation
+1. Navigate to the **Customer Reviews** page (`/reviews`).
+2. Click **Write Review**.
+3. Select your rating (1-5 stars), type your detailed feedback, and submit.
+4. Click **Claim Reward (Inter-Contract)** to trigger the cross-contract call (`community_reviews` -> `treasury_core.reward_reviewer`) and claim 100 XLM.
+
+---
+
+## 🛠 Setup & Run Instructions
+
+### 1. Install Dependencies
+
+```bash
+git clone https://github.com/Suchismita40/community-treasury-management.git community-treasury-management
+cd community-treasury-management
+npm install
+```
+
+### 2. Compile & Test Smart Contract
 
 ```bash
 cd contracts/treasury_core
 cargo test
 ```
 
-### 2. Vitest Frontend Unit & Integration Tests (`tests/frontend/`)
-Run the Vitest + React Testing Library suite (**11/11 passing tests**):
+### 3. Run Locally
+
+Start the Next.js development server:
 
 ```bash
-npm run test
-```
-
----
-
-## 🚀 Getting Started & Local Development
-
-### 1. Prerequisites
-* Node.js v18+
-* Rust & `wasm32-unknown-unknown` target
-* Soroban CLI (`cargo install --locked soroban-cli`)
-
-### 2. Environment Configuration
-Create a `.env.local` file in the project root:
-
-```env
-NEXT_PUBLIC_STELLAR_NETWORK=testnet
-NEXT_PUBLIC_STELLAR_RPC_URL=https://soroban-testnet.stellar.org
-NEXT_PUBLIC_STELLAR_NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
-NEXT_PUBLIC_STELLAR_EXPLORER_URL=https://stellar.expert/explorer/testnet
-NEXT_PUBLIC_CONTRACT_ID=CB67890TREASURYCONTRACTIDSTELLARTESTNETDAPPDEMO
-STELLAR_ADMIN_SECRET_KEY=SDEMOADMINSECRETKEYFORLOCALDEVELOPMENTTESTINGONLY
-```
-
-### 3. Installation & Run
-
-```bash
-# Install dependencies
-npm install
-
-# Start local Next.js development server
 npm run dev
 ```
 
-Open **[http://localhost:3000](http://localhost:3000)** in your browser to access the StellarVault DApp.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
