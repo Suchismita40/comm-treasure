@@ -1,12 +1,14 @@
-name: Pull Request CI Pipeline
+name: Pull Request Integration Checks
 
 on:
+  push:
+    branches: [main, master]
   pull_request:
     branches: [main, master]
 
 jobs:
-  lint-and-typecheck:
-    name: Lint & Typecheck Frontend
+  frontend-quality-and-tests:
+    name: Frontend Quality & Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,8 +25,11 @@ jobs:
       - name: TypeScript Compiler Check
         run: npx tsc --noEmit
 
-  rust-contract-tests:
-    name: Soroban Smart Contract Tests
+      - name: Run Vitest Suite
+        run: npm run test
+
+  soroban-contract-build-check:
+    name: Soroban Contract Build Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,21 +48,3 @@ jobs:
         run: |
           cd contracts/community_reviews
           cargo test
-
-  frontend-unit-tests:
-    name: Frontend Unit & Integration Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Run Vitest Suite
-        run: npm run test
