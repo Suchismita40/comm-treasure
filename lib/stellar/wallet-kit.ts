@@ -3,13 +3,19 @@ import {
   isConnected as checkFreighterConnected,
   getPublicKey as getFreighterPublicKey,
   requestAccess as requestFreighterAccess,
-  isAllowed as checkFreighterAllowed,
 } from "@stellar/freighter-api";
 
 export interface WalletConnectResult {
   address: string;
   walletId: string;
   balance: number;
+}
+
+export interface SupportedWalletOption {
+  id: string;
+  name: string;
+  icon: string;
+  isInstalled?: boolean;
 }
 
 export class WalletError extends Error {
@@ -40,6 +46,21 @@ export class StellarWalletManager {
       StellarWalletManager.instance = new StellarWalletManager();
     }
     return StellarWalletManager.instance;
+  }
+
+  public static getSupportedWallets(): SupportedWalletOption[] {
+    const isFreighterInstalled =
+      typeof window !== "undefined" &&
+      !!((window as any).freighter || (window as any).stellar);
+
+    return [
+      { id: "freighter", name: "Freighter Wallet", icon: "🚀", isInstalled: isFreighterInstalled },
+      { id: "albedo", name: "Albedo Web Wallet", icon: "⚡", isInstalled: true },
+      { id: "xbull", name: "xBull Wallet", icon: "🐂", isInstalled: true },
+      { id: "rabet", name: "Rabet Wallet", icon: "🐰", isInstalled: true },
+      { id: "lobstr", name: "Lobstr Vault", icon: "🦞", isInstalled: true },
+      { id: "demo", name: "Instant Testnet Demo", icon: "🛡️", isInstalled: true },
+    ];
   }
 
   /**

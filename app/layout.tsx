@@ -6,6 +6,7 @@ import { Footer } from "../components/Footer";
 import { WalletModal } from "../components/WalletModal";
 import { AuthModal } from "../components/AuthModal";
 import { TransactionTracker } from "../components/TransactionTracker";
+import { MobileBottomNav } from "../components/MobileBottomNav";
 
 export const metadata: Metadata = {
   title: "Community Treasury Management | Soroban Treasury Vault",
@@ -33,10 +34,11 @@ export default function RootLayout({
       <body className="min-h-screen bg-slate-950 text-slate-100 flex flex-col antialiased">
         <Providers>
           <Navbar />
-          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24 lg:pb-8">
             {children}
           </main>
           <Footer />
+          <MobileBottomNav />
           <WalletModal />
           <AuthModal />
           <TransactionTracker />
