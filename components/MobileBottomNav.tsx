@@ -16,7 +16,10 @@ export function MobileBottomNav() {
   ];
 
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800/80 px-2 py-1.5 shadow-2xl">
+    <nav
+      aria-label="Mobile Navigation Bar"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800/80 px-2 py-1.5 shadow-2xl"
+    >
       <div className="flex items-center justify-around">
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
@@ -25,7 +28,8 @@ export function MobileBottomNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all ${
+              aria-current={isActive ? "page" : undefined}
+              className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 isActive
                   ? "text-blue-400 bg-blue-500/10 font-bold"
                   : "text-slate-400 hover:text-slate-200"
@@ -37,6 +41,6 @@ export function MobileBottomNav() {
           );
         })}
       </div>
-    </div>
+    </nav>
   );
 }
