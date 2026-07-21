@@ -1,7 +1,7 @@
 # Stellar Community Treasury Management (StellarVault)
 
-[![CI](https://github.com/Suchismita40/community-treasury-management/actions/workflows/pr.yml/badge.svg)](https://github.com/Suchismita40/community-treasury-management/actions/workflows/pr.yml)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://community-treasury-management.vercel.app/)
+[![CI](https://github.com/Suchismita40/comm-treasure/actions/workflows/pr.yml/badge.svg)](https://github.com/Suchismita40/comm-treasure/actions/workflows/pr.yml)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://comm-treasure.vercel.app/)
 [![Stellar](https://img.shields.io/badge/Powered%20by-Soroban-blueviolet?logo=stellar)](https://stellar.org)
 
 StellarVault is a decentralized Community Treasury Management and Governance platform powered by **Soroban Smart Contracts**, **Next.js 15**, and **StellarWalletsKit**.
@@ -12,8 +12,8 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 
 ## 🔗 Project Links
 
-* **GitHub Repository**: [Suchismita40/community-treasury-management](https://github.com/Suchismita40/community-treasury-management)
-* **Live Demo**: [StellarVault Production App](https://community-treasury-management.vercel.app/)
+* **GitHub Repository**: [Suchismita40/comm-treasure](https://github.com/Suchismita40/comm-treasure)
+* **Live Demo**: [StellarVault Production App](https://comm-treasure.vercel.app/)
 
 ---
 
@@ -220,7 +220,7 @@ Follow this step-by-step test scenario to experience the DApp's core lifecycle o
 ### 1. Install Dependencies
 
 ```bash
-git clone https://github.com/Suchismita40/community-treasury-management.git community-treasury-management
+git clone https://github.com/Suchismita40/comm-treasure.git comm-treasure
 cd community-treasury-management
 npm install
 ```
