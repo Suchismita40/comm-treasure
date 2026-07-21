@@ -45,12 +45,12 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 
 ## ⛓ Deployed Addresses (Stellar Testnet)
 
-* **Treasury Core Contract Address**: `CC35LHQER6EJDLCV747HWI3I3V3JUPCK4MIZFTH6NC55LTHC335Y47FC` (referred to as `CONTRACT_ADDRESS_HERE` in config)
-* **Community Reviews Registry Address**: `CC25LHQER6EJDLCV747HWI3I3V3JUPCK4MIZFTH6NC55LTHC335Y47FC`
+* **Treasury Core Contract Address**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC` (referred to as `CONTRACT_ADDRESS_HERE` in config)
+* **Community Reviews Registry Address**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`
 * **XLM Token Address (SAC Wrapper)**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`
 * **Deployer Address**: `GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN01`
 * **Example Contract Deployment Tx**: `0xa1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0` (referred to as `TRANSACTION_HASH_HERE` in config)
-* **Explorer Link**: [Stellar Expert Explorer](https://stellar.expert/explorer/testnet/contract/CC35LHQER6EJDLCV747HWI3I3V3JUPCK4MIZFTH6NC55LTHC335Y47FC)
+* **Explorer Link**: [Stellar Expert Explorer](https://stellar.expert/explorer/testnet/contract/CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC)
 
 ---
 
