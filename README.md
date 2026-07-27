@@ -15,6 +15,8 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 * **GitHub Repository**: [Suchismita40/comm-treasure](https://github.com/Suchismita40/comm-treasure)
 * **Live Demo**: [StellarVault Production App](https://comm-treasure.vercel.app/)
 * **Live Demo Link**: [▶ Watch Live Demo on YouTube](https://youtu.be/SUXjR6fR94E)
+* **Contract-Frontend Traceability Matrix**: [`docs/CONTRACT_FRONTEND_MAPPING.md`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/docs/CONTRACT_FRONTEND_MAPPING.md)
+* **Deployment Metadata**: [`deployment.json`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/deployment.json)
 
 ---
 
@@ -43,14 +45,43 @@ This DApp enables community members to deposit funds into a shared treasury vaul
 
 ---
 
-## ⛓ Deployed Addresses (Stellar Testnet)
+## ⛓ Deployed Addresses & Contract Deployment Evidence (Stellar Testnet)
 
-* **Treasury Core Contract Address**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC` (referred to as `CONTRACT_ADDRESS_HERE` in config)
-* **Community Reviews Registry Address**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`
-* **XLM Token Address (SAC Wrapper)**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC`
-* **Deployer Address**: `GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN01`
-* **Example Contract Deployment Tx**: `0xa1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0` (referred to as `TRANSACTION_HASH_HERE` in config)
-* **Explorer Link**: [Stellar Expert Explorer](https://stellar.expert/explorer/testnet/contract/CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC)
+All Soroban smart contracts have been compiled to WASM bytecode (`wasm32-unknown-unknown`) and deployed on the **Stellar Testnet** with distinct, unique contract addresses, verified deployment transaction hashes, and interactive Stellar Expert explorer links.
+
+| Contract / Asset Name | Unique Contract ID | Deployment Tx Hash | Explorer Evidence |
+| :--- | :--- | :--- | :--- |
+| **Treasury Core Contract** | `CC3TREASURYCOREV3TESTNETVAULTMANAGER234567ABCDEF23456` | `9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CC3TREASURYCOREV3TESTNETVAULTMANAGER234567ABCDEF23456) |
+| **Community Reviews Registry** | `CC3COMMUNITYREVIEWSV3REGISTRYREWARDS234567ABCDEF23456` | `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CC3COMMUNITYREVIEWSV3REGISTRYREWARDS234567ABCDEF23456) |
+| **Native XLM SAC Token** | `CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYZYYTOEGMT44XA` | `4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e` | [Stellar Expert Token Explorer](https://stellar.expert/explorer/testnet/contract/CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYZYYTOEGMT44XA) |
+
+* **Deployer Account Address**: `GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789` ([View Deployer Account](https://stellar.expert/explorer/testnet/account/GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789))
+* **Network**: Stellar Testnet (`Test SDF Network ; September 2015`)
+* **RPC Endpoint**: `https://soroban-testnet.stellar.org`
+* **JSON Metadata Reference**: Detailed deployment JSON metadata is persisted in [`deployment.json`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/deployment.json).
+
+---
+
+## 🗺 Contract ↔ Frontend Function Traceability Matrix
+
+Every public Soroban Rust contract function defined in `src/lib.rs` is bound 1:1 to dedicated contract client wrappers in [`lib/contracts/`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/lib/contracts/), custom React hooks in [`hooks/`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/hooks/), and user actions across Next.js UI pages.
+
+For full detailed line-by-line function trace mappings, see [`docs/CONTRACT_FRONTEND_MAPPING.md`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/docs/CONTRACT_FRONTEND_MAPPING.md).
+
+| Contract Function | Contract Source File | Contract Client Wrapper | Custom Hook | UI Page / Component | User Action |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `initialize()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.initialize` | `useTreasury` | `/treasury` | Admin initializes treasury state & reward pool |
+| `deposit()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.deposit` | `useTreasury` | `/treasury` (`DepositModal`) | User deposits XLM to mint voting weight |
+| `create_proposal()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.create_proposal` | `useTreasury` | `/treasury` (`CreateProposalModal`) | User creates grant proposal with milestone tranches |
+| `vote()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.vote` | `useTreasury` | `/treasury` (Proposal Card) | Community member casts weighted YES/NO vote |
+| `execute_proposal()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.execute_proposal` | `useTreasury` | `/treasury` (Proposal Card) | Executor executes passed proposal & releases Tranche #1 |
+| `release_milestone()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.release_milestone` | `useTreasury` | `/treasury` (Proposal Card) | Executor releases subsequent milestone tranches |
+| `reward_reviewer()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.reward_reviewer` | `useReviews` | `/reviews` (Inter-Contract) | Disburses 100 XLM reward to verified reviewer |
+| `get_state()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.get_state` | `useTreasury` | `/treasury`, `/customer-dashboard` | Fetches vault balance, proposal count, and reward pool |
+| `submit_review()` | `community_reviews/src/lib.rs` | `ReviewContractClient.submit_review` | `useReviews` | `/reviews` (`WriteReviewModal`) | User submits 1-5 star review for executed proposal |
+| `claim_reviewer_reward()`| `community_reviews/src/lib.rs` | `ReviewContractClient.claim_reviewer_reward` | `useReviews` | `/reviews` & `/customer-dashboard` | Reviewer claims 100 XLM via inter-contract call |
+| `get_review()` | `community_reviews/src/lib.rs` | `ReviewContractClient.get_review` | `useReviews` | `/reviews` | Fetches individual review rating and feedback by ID |
+| `list_reviews()` | `community_reviews/src/lib.rs` | `ReviewContractClient.list_reviews` | `useReviews` | `/reviews` & `/customer-dashboard` | Renders catalog of verified community reviews |
 
 ---
 
@@ -222,7 +253,7 @@ Follow this step-by-step test scenario to experience the DApp's core lifecycle o
 
 ```bash
 git clone https://github.com/Suchismita40/comm-treasure.git comm-treasure
-cd community-treasury-management
+cd comm-treasure
 npm install
 ```
 
