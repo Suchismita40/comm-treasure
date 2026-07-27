@@ -68,20 +68,20 @@ Every public Soroban Rust contract function defined in `src/lib.rs` is bound 1:1
 
 For full detailed line-by-line function trace mappings, see [`docs/CONTRACT_FRONTEND_MAPPING.md`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/docs/CONTRACT_FRONTEND_MAPPING.md).
 
-| Contract Function | Contract Source File | Contract Client Wrapper | Custom Hook | UI Page / Component | User Action |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `initialize()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.initialize` | `useTreasury` | `/treasury` | Admin initializes treasury state & reward pool |
-| `deposit()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.deposit` | `useTreasury` | `/treasury` (`DepositModal`) | User deposits XLM to mint voting weight |
-| `create_proposal()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.create_proposal` | `useTreasury` | `/treasury` (`CreateProposalModal`) | User creates grant proposal with milestone tranches |
-| `vote()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.vote` | `useTreasury` | `/treasury` (Proposal Card) | Community member casts weighted YES/NO vote |
-| `execute_proposal()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.execute_proposal` | `useTreasury` | `/treasury` (Proposal Card) | Executor executes passed proposal & releases Tranche #1 |
-| `release_milestone()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.release_milestone` | `useTreasury` | `/treasury` (Proposal Card) | Executor releases subsequent milestone tranches |
-| `reward_reviewer()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.reward_reviewer` | `useReviews` | `/reviews` (Inter-Contract) | Disburses 100 XLM reward to verified reviewer |
-| `get_state()` | `treasury_core/src/lib.rs` | `TreasuryContractClient.get_state` | `useTreasury` | `/treasury`, `/customer-dashboard` | Fetches vault balance, proposal count, and reward pool |
-| `submit_review()` | `community_reviews/src/lib.rs` | `ReviewContractClient.submit_review` | `useReviews` | `/reviews` (`WriteReviewModal`) | User submits 1-5 star review for executed proposal |
-| `claim_reviewer_reward()`| `community_reviews/src/lib.rs` | `ReviewContractClient.claim_reviewer_reward` | `useReviews` | `/reviews` & `/customer-dashboard` | Reviewer claims 100 XLM via inter-contract call |
-| `get_review()` | `community_reviews/src/lib.rs` | `ReviewContractClient.get_review` | `useReviews` | `/reviews` | Fetches individual review rating and feedback by ID |
-| `list_reviews()` | `community_reviews/src/lib.rs` | `ReviewContractClient.list_reviews` | `useReviews` | `/reviews` & `/customer-dashboard` | Renders catalog of verified community reviews |
+| Contract Function | Soroban Contract Crate | Client & Hook Binding | UI Location & Action |
+| :--- | :--- | :--- | :--- |
+| `initialize()` | `treasury_core` | `TreasuryContractClient.initialize` | `/treasury` (Admin Vault Init) |
+| `deposit()` | `treasury_core` | `TreasuryContractClient.deposit` (`useTreasury`) | `/treasury` (Deposit XLM) |
+| `create_proposal()` | `treasury_core` | `TreasuryContractClient.create_proposal` (`useTreasury`) | `/treasury` (Grant Proposal) |
+| `vote()` | `treasury_core` | `TreasuryContractClient.vote` (`useTreasury`) | `/treasury` (Vote YES/NO) |
+| `execute_proposal()` | `treasury_core` | `TreasuryContractClient.execute_proposal` (`useTreasury`) | `/treasury` (Release Tranche #1) |
+| `release_milestone()`| `treasury_core` | `TreasuryContractClient.release_milestone` (`useTreasury`) | `/treasury` (Release Milestone) |
+| `reward_reviewer()` | `treasury_core` | `TreasuryContractClient.reward_reviewer` (`useReviews`) | `/reviews` (Inter-Contract Reward) |
+| `get_state()` | `treasury_core` | `TreasuryContractClient.get_state` (`useTreasury`) | `/treasury` (Vault Stats) |
+| `submit_review()` | `community_reviews` | `ReviewContractClient.submit_review` (`useReviews`) | `/reviews` (Submit 1-5 Star Review) |
+| `claim_reviewer_reward()` | `community_reviews` | `ReviewContractClient.claim_reviewer_reward` (`useReviews`) | `/reviews` (Claim 100 XLM Reward) |
+| `get_review()` | `community_reviews` | `ReviewContractClient.get_review` (`useReviews`) | `/reviews` (View Review Detail) |
+| `list_reviews()` | `community_reviews` | `ReviewContractClient.list_reviews` (`useReviews`) | `/reviews` (Review Catalog) |
 
 ---
 
