@@ -8,7 +8,7 @@ describe("AuthModal Component", () => {
   beforeEach(() => {
     useWalletStore.setState({
       isConnected: true,
-      address: "GDEMOTREASURYVOTER5762XLMBALANCESTELLARTESTNET",
+      address: "GBBCVE2IVHV6XWIN22PQAXNILOJUBUC3UYFZ5ZS5P3SCRYQB34MFZDD4",
       selectedWallet: "demo",
     });
 
@@ -17,7 +17,7 @@ describe("AuthModal Component", () => {
       isAuthenticated: false,
       isLoggingIn: false,
       challenge: {
-        address: "GDEMOTREASURYVOTER5762XLMBALANCESTELLARTESTNET",
+        address: "GBBCVE2IVHV6XWIN22PQAXNILOJUBUC3UYFZ5ZS5P3SCRYQB34MFZDD4",
         nonce: "testnonce12345",
         message: "Test Challenge Message",
         timestamp: new Date().toISOString(),

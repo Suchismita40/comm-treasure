@@ -70,7 +70,7 @@ export class StellarWalletManager {
     try {
       if (walletId === "demo") {
         // Instant Testnet keypair demo for frictionless testing
-        const demoPublicKey = "GDEMOTREASURYVOTER5762XLMBALANCESTELLARTESTNET";
+        const demoPublicKey = "GBBCVE2IVHV6XWIN22PQAXNILOJUBUC3UYFZ5ZS5P3SCRYQB34MFZDD4";
         this.currentAddress = demoPublicKey;
         this.currentWalletId = "demo";
         return {

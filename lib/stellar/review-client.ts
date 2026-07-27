@@ -17,7 +17,7 @@ export interface ReviewItem {
 let mockReviews: ReviewItem[] = [
   {
     id: 1,
-    reviewer: "GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789",
+    reviewer: "GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K",
     proposalId: 1,
     proposalTitle: "Stellar Developer Bootcamp Q3 Grant",
     rating: 5,
@@ -29,7 +29,7 @@ let mockReviews: ReviewItem[] = [
   },
   {
     id: 2,
-    reviewer: "GDEVCOMMUNITYMEMBERSTELLARTESTNET98765",
+    reviewer: "GDIFMVHTFUYL7GANQI443GV5QBPWM2QMI2CFDSV7AVY52IW4EYLQUZOD",
     proposalId: 2,
     proposalTitle: "Soroban Event Indexer Infrastructure",
     rating: 4,
@@ -41,7 +41,7 @@ let mockReviews: ReviewItem[] = [
   },
   {
     id: 3,
-    reviewer: "GDEMOTREASURYVOTER5762XLMBALANCESTELLARTESTNET",
+    reviewer: "GBBCVE2IVHV6XWIN22PQAXNILOJUBUC3UYFZ5ZS5P3SCRYQB34MFZDD4",
     proposalId: 3,
     proposalTitle: "Community Treasury Smart Contract Security Audit",
     rating: 5,

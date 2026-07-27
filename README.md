@@ -55,7 +55,7 @@ All Soroban smart contracts have been compiled to WASM bytecode (`wasm32-unknown
 | **Community Reviews Registry** | `CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5` | `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5) |
 | **Native XLM SAC Token** | `CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN` | `4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e` | [Stellar Expert Token Explorer](https://stellar.expert/explorer/testnet/contract/CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN) |
 
-* **Deployer Account Address**: `GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789` ([View Deployer Account](https://stellar.expert/explorer/testnet/account/GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789))
+* **Deployer Account Address**: `GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K` ([View Deployer Account](https://stellar.expert/explorer/testnet/account/GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K))
 * **Network**: Stellar Testnet (`Test SDF Network ; September 2015`)
 * **RPC Endpoint**: `https://soroban-testnet.stellar.org`
 * **JSON Metadata Reference**: Detailed deployment JSON metadata is persisted in [`deployment.json`](file:///c:/Users/user/OneDrive/Desktop/COMM%20TREASURE/deployment.json).
@@ -225,7 +225,7 @@ Follow this step-by-step test scenario to experience the DApp's core lifecycle o
    * **Title**: `Stellar Developer Bootcamp Q3 Grant`
    * **Grant Amount**: `10000 XLM`
    * **Milestones**: `4 Tranches` (2,500 XLM per milestone)
-   * **Recipient Address**: `GBOOTCAMPDEVRECEIVERSTELLARTESTNET012345`
+   * **Recipient Address**: `GCALV2ZHN7TOW37IFUAHJMXMDGYQFUPKR7PI7ZLRCCKQN43SELDNPO3T`
    * **Description**: `Fund 10 full scholarships for open-source Soroban smart contract training.`
 3. Click **Submit Milestone Proposal** and sign the transaction in Freighter.
 

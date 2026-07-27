@@ -25,7 +25,7 @@ describe("WalletModal Component", () => {
   it("displays connected view when wallet is connected", () => {
     useWalletStore.setState({
       isConnected: true,
-      address: "GDEMOTREASURYVOTER5762XLMBALANCESTELLARTESTNET",
+      address: "GBBCVE2IVHV6XWIN22PQAXNILOJUBUC3UYFZ5ZS5P3SCRYQB34MFZDD4",
       selectedWallet: "demo",
     });
 
