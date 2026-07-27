@@ -5,10 +5,10 @@ import { TreasuryContractClient } from "../../lib/stellar/contract-client";
 describe("Milestone-Based Escrow Disbursal Logic & Client", () => {
   it("calculates milestone tranche amounts correctly on proposal creation", async () => {
     const res = await TreasuryContractClient.createProposal(
-      "GDEMOTREASURYVOTER5762XLMBALANCESTELLARTESTNET",
+      "GDWCHNTHGSH6QX75U7JL5AKJDRDJGXMIBC4CWWCNR7HSODWIP3C24DAR",
       "Milestone Test Proposal",
       "Testing milestone escrow tranche allocation",
-      "GBOOTCAMPDEVRECEIVERSTELLARTESTNET012345",
+      "GBT34U4COONM72B6LT34DC37IYZLDDC3M7XXMQHY2LEZPIPHPSQPK6IB",
       10000,
       4
     );
@@ -31,7 +31,7 @@ describe("Milestone-Based Escrow Disbursal Logic & Client", () => {
     if (executedProp) {
       const initialClaimed = executedProp.milestonesClaimed || 1;
       const txHash = await TreasuryContractClient.releaseMilestone(
-        "GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789",
+        "GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K",
         executedProp.id
       );
 

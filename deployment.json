@@ -4,16 +4,16 @@
   "rpcUrl": "https://soroban-testnet.stellar.org",
   "timestamp": "2026-07-27T12:00:00Z",
   "deployer": {
-    "address": "GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789",
-    "explorerUrl": "https://stellar.expert/explorer/testnet/account/GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789"
+    "address": "GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K",
+    "explorerUrl": "https://stellar.expert/explorer/testnet/account/GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K"
   },
   "contracts": {
     "treasuryCore": {
       "name": "StellarVault Treasury Core Contract",
-      "contractId": "CC3TREASURYCOREV3TESTNETVAULTMANAGER234567ABCDEF23456",
+      "contractId": "CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM",
       "wasmHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "deploymentTxHash": "9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e",
-      "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CC3TREASURYCOREV3TESTNETVAULTMANAGER234567ABCDEF23456",
+      "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM",
       "deploymentTxExplorerUrl": "https://stellar.expert/explorer/testnet/tx/9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e",
       "functions": [
         "initialize",
@@ -28,10 +28,10 @@
     },
     "communityReviews": {
       "name": "StellarVault Community Reviews Registry Contract",
-      "contractId": "CC3COMMUNITYREVIEWSV3REGISTRYREWARDS234567ABCDEF23456",
+      "contractId": "CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5",
       "wasmHash": "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284ddd200126d9069b",
       "deploymentTxHash": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
-      "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CC3COMMUNITYREVIEWSV3REGISTRYREWARDS234567ABCDEF23456",
+      "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5",
       "deploymentTxExplorerUrl": "https://stellar.expert/explorer/testnet/tx/1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
       "functions": [
         "submit_review",
@@ -42,8 +42,8 @@
     },
     "xlmToken": {
       "name": "Stellar Native XLM Asset Contract (SAC)",
-      "contractId": "CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYZYYTOEGMT44XA",
-      "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYZYYTOEGMT44XA"
+      "contractId": "CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN",
+      "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN"
     }
   }
 }

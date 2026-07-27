@@ -1,7 +1,7 @@
 import { Contract, rpc, scValToNative, xdr, Address } from "@stellar/stellar-sdk";
-import { STELLAR_CONFIG } from "../config";
-import { Proposal, TreasuryEvent, TreasuryStats } from "../../types/treasury";
-import { logger } from "../logger";
+import { STELLAR_CONFIG } from "./config";
+import { Proposal, TreasuryEvent, TreasuryStats } from "../types/treasury";
+import { logger } from "./logger";
 
 let mockTreasuryState: TreasuryStats = {
   totalBalance: 45000.0,

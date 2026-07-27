@@ -51,9 +51,9 @@ All Soroban smart contracts have been compiled to WASM bytecode (`wasm32-unknown
 
 | Contract / Asset Name | Unique Contract ID | Deployment Tx Hash | Explorer Evidence |
 | :--- | :--- | :--- | :--- |
-| **Treasury Core Contract** | `CC3TREASURYCOREV3TESTNETVAULTMANAGER234567ABCDEF23456` | `9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CC3TREASURYCOREV3TESTNETVAULTMANAGER234567ABCDEF23456) |
-| **Community Reviews Registry** | `CC3COMMUNITYREVIEWSV3REGISTRYREWARDS234567ABCDEF23456` | `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CC3COMMUNITYREVIEWSV3REGISTRYREWARDS234567ABCDEF23456) |
-| **Native XLM SAC Token** | `CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYZYYTOEGMT44XA` | `4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e` | [Stellar Expert Token Explorer](https://stellar.expert/explorer/testnet/contract/CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYZYYTOEGMT44XA) |
+| **Treasury Core Contract** | `CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM` | `9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM) |
+| **Community Reviews Registry** | `CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5` | `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5) |
+| **Native XLM SAC Token** | `CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN` | `4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e` | [Stellar Expert Token Explorer](https://stellar.expert/explorer/testnet/contract/CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN) |
 
 * **Deployer Account Address**: `GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789` ([View Deployer Account](https://stellar.expert/explorer/testnet/account/GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789))
 * **Network**: Stellar Testnet (`Test SDF Network ; September 2015`)
@@ -150,7 +150,7 @@ pub struct Proposal {
     pub status: ProposalStatus,
     pub created_at: u64,
     pub milestone_count: u32,
-    pub current_milestone: u32,
+    pub currentMilestone: u32,
     pub milestone_amount: i128,
     pub milestones_claimed: u32,
 }

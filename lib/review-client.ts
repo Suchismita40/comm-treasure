@@ -1,6 +1,6 @@
 import { Contract, rpc, scValToNative, xdr, Address } from "@stellar/stellar-sdk";
-import { STELLAR_CONFIG } from "../config";
-import { logger } from "../logger";
+import { STELLAR_CONFIG } from "./config";
+import { logger } from "./logger";
 
 export interface ReviewItem {
   id: number;
