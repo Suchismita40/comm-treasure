@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { ReviewContractClient } from "../lib/stellar/review-client";
+import { ReviewContractClient } from "../lib/contracts/review-client";
 import { useTransactionStore } from "../lib/store/useTransactionStore";
 import { useWalletStore } from "../lib/store/useWalletStore";
 import { useAuthStore } from "../lib/store/useAuthStore";
@@ -12,14 +12,14 @@ export function useReviews() {
   const { isAuthenticated, openAuthModal } = useAuthStore();
   const { fetchEvents } = useEventStore();
 
-  // Query All Reviews
+  // Query All Reviews via Soroban list_reviews(limit)
   const reviewsQuery = useQuery({
     queryKey: ["community-reviews"],
-    queryFn: () => ReviewContractClient.fetchReviews(),
+    queryFn: () => ReviewContractClient.list_reviews(50),
     refetchInterval: 5000,
   });
 
-  // Mutation: Submit Review
+  // Mutation: Submit Review via Soroban submit_review(reviewer, proposal_id, rating, feedback)
   const submitReviewMutation = useMutation({
     mutationFn: async (data: {
       proposalId: number;
@@ -33,7 +33,7 @@ export function useReviews() {
         throw new Error("Authentication required. Please sign the login challenge.");
       }
 
-      const { reviewId, txHash } = await ReviewContractClient.submitReview(
+      const { reviewId, txHash } = await ReviewContractClient.submit_review(
         address,
         data.proposalId,
         data.proposalTitle,
@@ -62,7 +62,7 @@ export function useReviews() {
     },
   });
 
-  // Mutation: Claim Reviewer Reward via Inter-Contract Call
+  // Mutation: Claim Reviewer Reward via Soroban claim_reviewer_reward(reviewer, review_id, treasury_core_contract)
   const claimRewardMutation = useMutation({
     mutationFn: async (reviewId: number) => {
       if (!address) throw new Error("Wallet not connected");
@@ -71,7 +71,7 @@ export function useReviews() {
         throw new Error("Authentication required. Please sign the login challenge.");
       }
 
-      const txHash = await ReviewContractClient.claimReviewerReward(address, reviewId);
+      const txHash = await ReviewContractClient.claim_reviewer_reward(address, reviewId);
 
       const txId = addTransaction("claim_reviewer_reward (inter-contract)", txHash, {
         reviewId,

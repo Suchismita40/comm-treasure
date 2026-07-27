@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { TreasuryContractClient } from "../lib/stellar/contract-client";
+import { TreasuryContractClient } from "../lib/contracts/treasury-client";
 import { useTransactionStore } from "../lib/store/useTransactionStore";
 import { useWalletStore } from "../lib/store/useWalletStore";
 import { useAuthStore } from "../lib/store/useAuthStore";
@@ -12,10 +12,10 @@ export function useTreasury() {
   const { isAuthenticated, openAuthModal } = useAuthStore();
   const { fetchEvents } = useEventStore();
 
-  // Query Treasury Overview Stats
+  // Query Treasury Overview Stats via Soroban get_state()
   const statsQuery = useQuery({
     queryKey: ["treasury-stats"],
-    queryFn: () => TreasuryContractClient.fetchTreasuryStats(),
+    queryFn: () => TreasuryContractClient.get_state(),
     refetchInterval: 5000,
   });
 
@@ -26,7 +26,7 @@ export function useTreasury() {
     refetchInterval: 5000,
   });
 
-  // Mutation: Deposit Funds
+  // Mutation: Deposit Funds via Soroban deposit(from, amount)
   const depositMutation = useMutation({
     mutationFn: async (amount: number) => {
       if (!address) throw new Error("Wallet not connected");
@@ -54,7 +54,7 @@ export function useTreasury() {
     },
   });
 
-  // Mutation: Create Proposal
+  // Mutation: Create Proposal via Soroban create_proposal(...)
   const createProposalMutation = useMutation({
     mutationFn: async (data: {
       title: string;
@@ -69,7 +69,7 @@ export function useTreasury() {
         throw new Error("Authentication required. Please sign the login challenge.");
       }
 
-      const { proposalId, txHash } = await TreasuryContractClient.createProposal(
+      const { proposalId, txHash } = await TreasuryContractClient.create_proposal(
         address,
         data.title,
         data.description,
@@ -96,7 +96,7 @@ export function useTreasury() {
     },
   });
 
-  // Mutation: Vote Proposal
+  // Mutation: Vote Proposal via Soroban vote(voter, proposal_id, approve)
   const voteMutation = useMutation({
     mutationFn: async (data: { proposalId: number; approve: boolean }) => {
       if (!address) throw new Error("Wallet not connected");
@@ -127,7 +127,7 @@ export function useTreasury() {
     },
   });
 
-  // Mutation: Execute Proposal
+  // Mutation: Execute Proposal via Soroban execute_proposal(executor, proposal_id)
   const executeMutation = useMutation({
     mutationFn: async (proposalId: number) => {
       if (!address) throw new Error("Wallet not connected");
@@ -136,7 +136,7 @@ export function useTreasury() {
         throw new Error("Authentication required. Please sign the login challenge.");
       }
 
-      const txHash = await TreasuryContractClient.executeProposal(address, proposalId);
+      const txHash = await TreasuryContractClient.execute_proposal(address, proposalId);
       const txId = addTransaction("execute_proposal", txHash, { proposalId });
 
       await new Promise((res) => setTimeout(res, 1500));
@@ -156,7 +156,7 @@ export function useTreasury() {
     },
   });
 
-  // Mutation: Release Milestone Tranche
+  // Mutation: Release Milestone Tranche via Soroban release_milestone(executor, proposal_id)
   const releaseMilestoneMutation = useMutation({
     mutationFn: async (proposalId: number) => {
       if (!address) throw new Error("Wallet not connected");
@@ -165,7 +165,7 @@ export function useTreasury() {
         throw new Error("Authentication required. Please sign the login challenge.");
       }
 
-      const txHash = await TreasuryContractClient.releaseMilestone(address, proposalId);
+      const txHash = await TreasuryContractClient.release_milestone(address, proposalId);
       const txId = addTransaction("release_milestone", txHash, { proposalId });
 
       await new Promise((res) => setTimeout(res, 1500));
