@@ -208,7 +208,7 @@ Follow this step-by-step test scenario to experience the DApp's core lifecycle o
 
 ### Step 1: Wallet Authentication
 1. Install Freighter Wallet extension and switch network to Testnet.
-2. Go to the StellarVault landing page (http://localhost:3000).
+2. Go to the StellarVault landing page ([http://localhost:3000](http://localhost:3000) or [https://comm-treasure.vercel.app](https://comm-treasure.vercel.app)).
 3. Click **Connect Wallet** and select Freighter.
 4. Once authenticated, your session is established, and you are redirected to the Treasury Hub.
 
