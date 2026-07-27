@@ -31,7 +31,7 @@ describe("Milestone-Based Escrow Disbursal Logic & Client", () => {
     if (executedProp) {
       const initialClaimed = executedProp.milestonesClaimed || 1;
       const txHash = await TreasuryContractClient.releaseMilestone(
-        "GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN01",
+        "GADMINSTELLARTESTNETCOMMUNITYTREASURYADMIN0123456789",
         executedProp.id
       );
 

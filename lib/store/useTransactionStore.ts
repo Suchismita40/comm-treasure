@@ -18,11 +18,11 @@ export const useTransactionStore = create<TransactionStoreState>((set, get) => (
   transactions: [
     {
       id: "tx-init-001",
-      hash: "0xa1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0",
+      hash: "9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e",
       functionName: "deposit",
       status: "Success",
       timestamp: new Date(Date.now() - 86400000 * 2).toISOString(),
-      explorerUrl: `${STELLAR_CONFIG.explorerUrl}/tx/0xa1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0`,
+      explorerUrl: `${STELLAR_CONFIG.explorerUrl}/tx/9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e`,
       params: { amount: "20,000 XLM" },
       retryCount: 0,
       maxRetries: 3,
