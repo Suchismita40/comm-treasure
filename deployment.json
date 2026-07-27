@@ -12,9 +12,9 @@
       "name": "StellarVault Treasury Core Contract",
       "contractId": "CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM",
       "wasmHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "deploymentTxHash": "9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e",
+      "deploymentTxHash": "1c6a854d847bd25852ae3ed8170665d7ede7ea20bda0109ff5af2af1692c8699",
       "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM",
-      "deploymentTxExplorerUrl": "https://stellar.expert/explorer/testnet/tx/9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e",
+      "deploymentTxExplorerUrl": "https://stellar.expert/explorer/testnet/tx/1c6a854d847bd25852ae3ed8170665d7ede7ea20bda0109ff5af2af1692c8699",
       "functions": [
         "initialize",
         "deposit",
@@ -30,9 +30,9 @@
       "name": "StellarVault Community Reviews Registry Contract",
       "contractId": "CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5",
       "wasmHash": "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284ddd200126d9069b",
-      "deploymentTxHash": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+      "deploymentTxHash": "1c6a854d847bd25852ae3ed8170665d7ede7ea20bda0109ff5af2af1692c8699",
       "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5",
-      "deploymentTxExplorerUrl": "https://stellar.expert/explorer/testnet/tx/1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+      "deploymentTxExplorerUrl": "https://stellar.expert/explorer/testnet/tx/1c6a854d847bd25852ae3ed8170665d7ede7ea20bda0109ff5af2af1692c8699",
       "functions": [
         "submit_review",
         "claim_reviewer_reward",

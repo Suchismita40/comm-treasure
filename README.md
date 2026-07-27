@@ -51,8 +51,8 @@ All Soroban smart contracts have been compiled to WASM bytecode (`wasm32-unknown
 
 | Contract / Asset Name | Unique Contract ID | Deployment Tx Hash | Explorer Evidence |
 | :--- | :--- | :--- | :--- |
-| **Treasury Core Contract** | `CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM` | `9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM) |
-| **Community Reviews Registry** | `CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5` | `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5) |
+| **Treasury Core Contract** | `CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM` | `1c6a854d847bd25852ae3ed8170665d7ede7ea20bda0109ff5af2af1692c8699` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CAFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUTSM) |
+| **Community Reviews Registry** | `CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5` | `1c6a854d847bd25852ae3ed8170665d7ede7ea20bda0109ff5af2af1692c8699` | [Stellar Expert Contract Explorer](https://stellar.expert/explorer/testnet/contract/CAKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBIFAUCQKBJRD5) |
 | **Native XLM SAC Token** | `CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN` | `4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3e` | [Stellar Expert Token Explorer](https://stellar.expert/explorer/testnet/contract/CAPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4HQ6DYPB4QTN) |
 
 * **Deployer Account Address**: `GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K` ([View Deployer Account](https://stellar.expert/explorer/testnet/account/GAAMKFO5QOYKOVOUVPQZXYDNEDOUJM7TTUBV5YPNYX23UUVWVSCFJ25K))
